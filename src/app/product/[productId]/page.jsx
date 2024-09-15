@@ -82,9 +82,9 @@ const ProductDetails = async ({ params }) => {
   const product = await getProductData(params.productId);
 
   return (
-    <div className='max-w-[1200px] mx-auto my-10'>
+    <div className='max-w-[1200px] mx-auto my-10 px-4'>
       <div className='grid grid-cols-12 gap-6'>
-        <div className='col-span-5'>
+        <div className='lg:col-span-5 col-span-12'>
           <Image
             src={`https://homeshopfashion.com/backend/data/products/${product.id}/600x720-${product?.main_image}`}
             width={400}
@@ -95,7 +95,7 @@ const ProductDetails = async ({ params }) => {
           />
         </div>
 
-        <div className='col-span-7'>
+        <div className='lg:col-span-7 col-span-12'>
           <h1 className='font-bold font-sans text-lg'>{product?.name}</h1>
           <div className='flex gap-3 mt-3 mb-2'>
             <h3 className='line-through'>Rs. {product.mrp}</h3>

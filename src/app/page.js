@@ -9,17 +9,17 @@ export default async function Home() {
 
   return (
     <>
-      <div className='max-w-[1200px] mx-auto'>
+      <div className='max-w-[1200px] mx-auto px-4 py-8'>
         <div className='grid grid-cols-12 gap-5'>
           {products?.map((prod) => (
-            <div className='col-span-3 border' key={prod?.id}>
+            <div className='lg:col-span-3 md:col-span-4 sm:col-span-6 col-span-6 border' key={prod?.id}>
               <Link href={`/product/${prod.id}`}>
                 <div>
                   <Image
                     src={`https://homeshopfashion.com/backend/data/products/${prod.id}/600x720-${prod?.main_image}`}
                     width={400}
                     height={400}
-                    className='w-[auto] h-[400px] object-cover'
+                    className='w-[100%] xl:h-[400px] h-[200px]  object-cover'
                     alt={prod.name}
                     loading='lazy' // Enable lazy loading
                   />
