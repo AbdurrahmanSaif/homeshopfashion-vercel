@@ -9,21 +9,72 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: product.name,
       description: product.description,
+      siteName: 'Homeshop Fashion',
       images: [
         {
-          url: `https://homeshopfashion.com/backend/data/products/${product.id}/600x720-${product.main_image}`,
+          url: `https://homeshopfashion.com/backend/data/products/${product.id}/${product.main_image}`,
         },
       ],
       url: `https://homeshopfashion.com/product/${product.id}`,
+      locale: "en_US",
+      type: "website",
     },
     twitter: {
-      card: 'summary_large_image',
-    }
+      card: "summary_large_image",
+      title: product.name,
+      description: product.description,
+      images: [
+        {
+          url: `https://homeshopfashion.com/backend/data/products/${product.id}/${product.main_image}`,
+        },
+      ],
+    },
+    other: {
+      "og:price:amount": product.selling_price,
+      "og:price:currency": "INR",
+    },
   };
 }
 
+// export async function generateMetadata({ params }): Promise<Metadata> {
+//   const product = await getProduct(params.id);
+
+//   const title = `${product.name} | Your Store Name`;
+//   const description = product.description;
+//   const images = [product.imageUrl];
+//   const url = `https://yourstore.com/products/${product.id}`;
+
+//   return {
+//     title,
+//     description,
+//     openGraph: {
+//       title,
+//       description,
+//       url,
+//       siteName: 'Your Store Name',
+//       images: images.map(img => ({
+//         url: img,
+//       })),
+//       locale: 'en_US',
+//       type: 'website',
+//     },
+//     twitter: {
+//       card: 'summary_large_image',
+//       title,
+//       description,
+//       images,
+//     },
+//     other: {
+//       'og:price:amount': product.price,
+//       'og:price:currency': product.currency,
+//     },
+//   };
+// }
+
 async function getProductData(productId) {
-  const response = await fetch(`https://homeshopfashion.com/backend/api/web/products/${productId}`);
+  const response = await fetch(
+    `https://homeshopfashion.com/backend/api/web/products/${productId}`
+  );
   return response.json();
 }
 
